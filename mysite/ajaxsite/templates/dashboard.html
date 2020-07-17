@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<button id="bntGetData">Get Data</button>
+		<div id="divData"></div>
+	</body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#bntGetData').click(function(){
+				$.ajax({
+        type: "POST",
+        url: "/ajaxsite/data", 
+        data: {'name': 'me', 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+        success : function(data) {
+             $('#divData').html(data);
+         }
+});
+			});
+		});
+	</script>
+</html>
